@@ -24,7 +24,7 @@ function GetUserInfo(req, res, next)
         }
         else {
             res.json({
-                results
+                UserInfo: results
             });
         }
     });

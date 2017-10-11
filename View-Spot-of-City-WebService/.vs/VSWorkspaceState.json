@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\public",
+    "\\public\\stylesheets",
+    "\\routes",
+    "\\routes\\viewspot",
+    "\\views"
+  ],
+  "SelectedNode": "\\routes\\viewspot\\getviewinfo.js",
+  "PreviewInSolutionExplorer": false
+}

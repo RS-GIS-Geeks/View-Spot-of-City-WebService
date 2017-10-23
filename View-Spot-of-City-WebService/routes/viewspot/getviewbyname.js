@@ -18,7 +18,7 @@ function GetViewByName(req, res, next)
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                ViewInfo: err.message
             });
             return;
         }

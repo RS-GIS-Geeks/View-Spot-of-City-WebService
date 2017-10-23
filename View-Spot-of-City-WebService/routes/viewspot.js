@@ -9,6 +9,6 @@ var viewinfobylocate = require("./viewspot/getviewbylocate")
 router.get("/userinfo", userInfo.GetUserInfo);
 router.get("/viewinfobyname", viewinfobyname.GetViewByName);
 router.get("/viewcountbyname", viewcountbyneme.GetViewCountByName);
-router.get("./viewinfobylocate", viewinfobylocate.GetViewInfoByLocate)
+router.get("/viewinfobylocate", viewinfobylocate.GetViewInfoByLocate)
 
 module.exports = router;

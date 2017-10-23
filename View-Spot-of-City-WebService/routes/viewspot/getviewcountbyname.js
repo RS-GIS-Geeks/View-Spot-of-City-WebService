@@ -24,7 +24,7 @@ function GetViewCountByName(req, res, next)
         }
         else {
             res.json({
-                ViewCount: results
+                ViewCount: json
             });
         }
     });

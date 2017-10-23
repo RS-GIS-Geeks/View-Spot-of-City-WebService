@@ -24,7 +24,7 @@ function GetViewByName(req, res, next)
         }
         else {
             res.json({
-                ViewInfo: results + queryString
+                ViewInfo: results
             });
         }
     });

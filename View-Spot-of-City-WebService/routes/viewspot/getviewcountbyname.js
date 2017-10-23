@@ -18,13 +18,13 @@ function GetViewCountByName(req, res, next)
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                ViewCount: []
             });
             return;
         }
         else {
             res.json({
-                ViewInfo: results
+                ViewCount: results
             });
         }
     });

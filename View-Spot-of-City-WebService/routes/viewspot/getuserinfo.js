@@ -13,8 +13,8 @@ function GetUserInfo(req, res, next)
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM users" + 
-    " WHERE mail = '" + params.mail + "';";
+    var queryString = "SELECT * FROM Users" + 
+    " WHERE Mail = '" + params.mail + "';";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({

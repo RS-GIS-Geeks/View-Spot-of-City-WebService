@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfo(req, res, next) {
+function GetViewInfoByLocate(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -32,4 +32,4 @@ function GetViewInfo(req, res, next) {
     connection.end();
 }
 
-exports.GetViewInfo = GetViewInfo;
+exports.GetViewInfoByLocate = GetViewInfoByLocate;

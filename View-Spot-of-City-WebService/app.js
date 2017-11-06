@@ -9,7 +9,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var viewspot = require('./routes/viewspot');
 var coordinateconvert = require('./routes/coordinateconvert');
-var pg = require('./routes/pgtest');
 
 var app = express();
 
@@ -29,7 +28,6 @@ app.use('/', index);
 app.use('/users', users);
 app.use("/viewspot", viewspot);
 app.use('/coordinateconvert', coordinateconvert);
-app.use('/pgtest', pg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

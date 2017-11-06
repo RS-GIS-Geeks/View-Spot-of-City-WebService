@@ -11,9 +11,23 @@ function GetVisitorByYear(req, res, next) {
         database: "ViewSpotOfWuhan"
     });
     var params = req.query;
-        
-    var queryString = "SELECT * FROM Visitors" +
+    var queryString;
+    if(params.year != null && params.viewid != null)
+    {
+        queryString = "SELECT * FROM Visitors" +
         " WHERE Year = '" + params.year + "'" + " and ViewId = '" + params.viewid + "';";
+    }
+    else if(params.year == null)
+    {
+        queryString = "SELECT * FROM Visitors" +
+        " WHERE ViewId = '" + params.viewid + "';";
+    }
+    else
+    {
+        queryString = "SELECT * FROM Visitors" +
+        " WHERE Year = '" + params.year + "';";
+    }
+
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({

@@ -13,7 +13,7 @@ function GetVisitorByYear(req, res, next) {
     var params = req.query;
         
     var queryString = "SELECT * FROM Visitors" +
-        " WHERE Year = '" + params.year + "';";
+        " WHERE Year = '" + params.year + "'" + " and ViewId = '" + params.viewid + "';";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({

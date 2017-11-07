@@ -15,7 +15,8 @@ function GetVisitorByYearMonth(req, res, next) {
     queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
     FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
     " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + 
-    "'" + " AND Visitors.Month = '" + params.month + "';";
+    "'" + " AND Visitors.Month = '" + params.month + "' \
+    order by ViewSpotData.biz_ext_rating limit" + params.limit + ";";
 
     connection.query(queryString, function (err, results) {
         if (err) {

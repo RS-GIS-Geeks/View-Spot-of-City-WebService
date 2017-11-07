@@ -14,18 +14,22 @@ function GetVisitorByYear(req, res, next) {
     var queryString;
     if(params.year != null && params.viewid != null)
     {
-        queryString = "SELECT * FROM Visitors" +
-        " WHERE Year = '" + params.year + "'" + " and ViewId = '" + params.viewid + "';";
+        queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
+        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + 
+        "'" + " AND Visitors.ViewId = '" + params.viewid + "';";
     }
     else if(params.year == null)
     {
-        queryString = "SELECT * FROM Visitors" +
-        " WHERE ViewId = '" + params.viewid + "';";
+        queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
+        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        " WHERE Visitors.ViewId = ViewSpotData.id " + " AND Visitors.ViewId = '" + params.viewid + "';";
     }
     else
     {
-        queryString = "SELECT * FROM Visitors" +
-        " WHERE Year = '" + params.year + "';";
+        queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
+        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + "';";
     }
 
     connection.query(queryString, function (err, results) {

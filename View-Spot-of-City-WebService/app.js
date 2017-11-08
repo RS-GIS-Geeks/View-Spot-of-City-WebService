@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use("/viewspot", viewspot);
-app.use('/coordinateconvert', coordinateconvert)
+app.use('/coordinateconvert', coordinateconvert);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,10 +4,10 @@ var mysql = require("mysql");
 
 function GetViewByCost(req, res, next) {
     var connection = mysql.createConnection({
-        host: "39.108.171.209",
+        host: "localhost",
         port: 3306,
-        user: "rsgisgeeks",
-        password: "1506geeks",
+        user: "admin",
+        password: "admin1997",
         database: "ViewSpotOfWuhan"
     });
     var params = req.query;

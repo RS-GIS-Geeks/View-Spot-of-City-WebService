@@ -5,14 +5,20 @@ var userInfo = require("./viewspot/getuserinfo");
 var viewinfobyname = require("./viewspot/getviewbyname");
 var viewcountbyneme = require("./viewspot/getviewcountbyname");
 var viewinfobylocate = require("./viewspot/getviewbylocate");
-var visitorbyyear = require("./viewspot/getvisitorbyyear")
+var visitorbyyear = require("./viewspot/getvisitorbyyear");
+var viewbyvisitor = require("./viewspot/getviewbyvisitor");
+var viewbyrating = require("./viewspot/getviewbyrating");
+var viewbycost = require("./viewspot/getviewbycost")
 var visitorbyyearmonth = require("./viewspot/getvisitorbyyearmonth")
 
 router.get("/userinfo", userInfo.GetUserInfo);
 router.get("/viewinfobyname", viewinfobyname.GetViewByName);
 router.get("/viewcountbyname", viewcountbyneme.GetViewCountByName);
 router.get("/viewinfobylocate", viewinfobylocate.GetViewInfoByLocate);
-router.get("/visitorbyyear", visitorbyyear.GetVisitorByYear)
+router.get("/visitorbyyear", visitorbyyear.GetVisitorByYear);
+router.get("/viewbyvisitor", viewbyvisitor.GetViewByVisitor);
+router.get("/viewbyrating", viewbyrating.GetViewByRating);
+router.get("/viewbycost", viewbycost.GetViewByCost)
 router.get("/visitorbyyearmonth", visitorbyyearmonth.GetVisitorByYearMonth)
 
 module.exports = router;

@@ -17,8 +17,8 @@ function GetViewByVisitor(req, res, next) {
         "a.ViewId," +   
         "a.Visitors," +
         "a.Year," +
-        "lat," +
-        "lng From Visitors a INNER JOIN ViewSpotData b ON a.Id = b.id" +
+        "lat as 'Lat'," +
+        "lng as 'Lng', name as 'ViewSpotName' From Visitors a INNER JOIN ViewSpotData b ON a.Id = b.id" +
         " ORDER BY a.Visitors DESC LIMIT " + params.limit + ";";
     connection.query(queryString, function (err, results) {
         if (err) {

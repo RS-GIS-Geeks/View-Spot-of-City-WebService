@@ -30,7 +30,7 @@ function GetViewByVisitor(req, res, next) {
         }
         else {
             res.json({
-                VisitorInfo: results
+                VisitorInfo: queryString
             });
         }
     });

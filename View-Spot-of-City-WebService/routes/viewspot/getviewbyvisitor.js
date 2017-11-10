@@ -19,7 +19,7 @@ function GetViewByVisitor(req, res, next) {
         "a.Year," +
         "lat as 'Lat'," +
         "lng as 'Lng', name as 'ViewSpotName' From Visitors a INNER JOIN ViewSpotData b ON a.Id = b.id " +
-        "where a.Month=" + params.month + " and a.Year=" + params.year
+        "where a.Month=" + params.month + " and a.Year=" + params.year + 
         " ORDER BY a.Visitors DESC LIMIT " + params.limit + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
@@ -30,7 +30,7 @@ function GetViewByVisitor(req, res, next) {
         }
         else {
             res.json({
-                VisitorInfo: queryString
+                VisitorInfo: results
             });
         }
     });

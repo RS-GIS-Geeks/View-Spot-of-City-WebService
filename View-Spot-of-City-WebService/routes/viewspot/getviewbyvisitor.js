@@ -24,7 +24,7 @@ function GetViewByVisitor(req, res, next) {
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: err.message
+                ViewInfo: err.message + "[" + queryString + "]"
             });
             return;
         }

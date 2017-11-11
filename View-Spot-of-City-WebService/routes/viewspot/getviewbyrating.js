@@ -13,7 +13,7 @@ function GetViewByRating(req, res, next) {
     var params = req.query;
 
     var queryString = "SELECT * From ViewSpotOfWuhan.ViewSpotData" +
-        " ORDER BY biz_ext_rating DESC LIMIT " + params.limit + ";";
+        " ORDER BY biz_ext_rating " + params.ascordesc + " LIMIT " + params.limit + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({

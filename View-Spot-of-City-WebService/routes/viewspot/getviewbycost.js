@@ -13,7 +13,7 @@ function GetViewByCost(req, res, next) {
     var params = req.query;
 
     var queryString = "SELECT * FROM ViewSpotOfWuhan.ViewSpotData" +
-        " ORDER BY biz_ext_cost DESC LIMIT " + params.limit + ";";
+        " ORDER BY biz_ext_cost " + params.ascordesc + " LIMIT " + params.limit + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({

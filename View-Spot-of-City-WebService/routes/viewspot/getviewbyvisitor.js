@@ -24,13 +24,13 @@ function GetViewByVisitor(req, res, next) {
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                VisitorInfo: err.message + "[" + queryString + "]"
+                ViewInfo: err.message + "[" + queryString + "]"
             });
             return;
         }
         else {
             res.json({
-                VisitorInfo: results
+                ViewInfo: results
             });
         }
     });

@@ -13,10 +13,7 @@ function GetViewByVisitor(req, res, next) {
     var params = req.query;
 
     var queryString = "SELECT  a.Id," +
-        "a.Month," +
-        "a.ViewId," +   
-        "a.Visitors," +
-        "a.Year," +
+        "a.*" +
         "lat," +
         "lng, name as 'ViewSpotName' From Visitors a INNER JOIN ViewSpotData b ON a.Id = b.id " +
         "where a.Month=" + params.month + " and a.Year=" + params.year + 

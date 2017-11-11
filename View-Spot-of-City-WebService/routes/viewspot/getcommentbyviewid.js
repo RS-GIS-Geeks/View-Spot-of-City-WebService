@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewByVisitor(req, res, next) {
+function GetCommentByViewid(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,28 +12,23 @@ function GetViewByVisitor(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT  a.Id," +
-        "a.Month," +
-        "a.ViewId," +   
-        "a.Visitors," +
-        "a.Year," +
-        "lat," +
-        "lng From Visitors a INNER JOIN ViewSpotData b ON a.Id = b.id" +
-        " ORDER BY a.Visitors DESC LIMIT " + params.limit + ";";
+    var queryString = "SELECT * From ViewSpotOfWuhan.Comments" +
+        " WHERE SpotId = '" + params.viewid + "'" +
+        " ORDER BY Year DESC ,Month DESC ,Day DESC ;";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: err.message
+                CommentInfo: err.message
             });
             return;
         }
         else {
             res.json({
-                ViewInfo: results
+                CommentInfo: results
             });
         }
     });
     connection.end();
 }
 
-exports.GetViewByVisitor = GetViewByVisitor;
+exports.GetCommentByViewid = GetCommentByViewid;

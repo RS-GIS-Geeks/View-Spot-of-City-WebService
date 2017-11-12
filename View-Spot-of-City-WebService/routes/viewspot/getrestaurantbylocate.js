@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfoByLocate(req, res, next) {
+function GetRestaurantInfoByLocate(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,23 +12,23 @@ function GetViewInfoByLocate(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM ViewSpotData" +
-        " WHERE ViewSpotData.lng > " + params.minLng + " and ViewSpotData.lng < " + params.maxLng +
-        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat + ";";
+    var queryString = "SELECT * FROM Restaurants" +
+        " WHERE Restaurants.Lng > " + params.minLng + " and Restaurants.Lng < " + params.maxLng +
+        " and Restaurants.Lat > " + params.minLat + " and Restaurants.Lat < " + params.maxLat + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                RestaurantInfo: err.message
             });
             return;
         }
         else {
             res.json({
-                ViewInfo: results
+                RestaurantInfo: results
             });
         }
     });
     connection.end();
 }
 
-exports.GetViewInfoByLocate = GetViewInfoByLocate;
+exports.GetRestaurantInfoByLocate = GetRestaurantInfoByLocate;

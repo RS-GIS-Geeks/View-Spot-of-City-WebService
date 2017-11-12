@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetStationInfoByLocate(req, res, next) {
+function GetPetrolStationInfoByLocate(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,9 +12,9 @@ function GetStationInfoByLocate(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM TransportStations" +
-        " WHERE TransportStations.Lng > " + params.minLng + " and TransportStations.Lng < " + params.maxLng +
-        " and TransportStations.Lat > " + params.minLat + " and TransportStations.Lat < " + params.maxLat + ";";
+    var queryString = "SELECT * FROM PetrolStations" +
+        " WHERE PetrolStations.Lng > " + params.minLng + " and PetrolStations.Lng < " + params.maxLng +
+        " and PetrolStations.Lat > " + params.minLat + " and PetrolStations.Lat < " + params.maxLat + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
@@ -31,4 +31,4 @@ function GetStationInfoByLocate(req, res, next) {
     connection.end();
 }
 
-exports.GetStationInfoByLocate = GetStationInfoByLocate;
+exports.GetPetrolStationInfoByLocate = GetPetrolStationInfoByLocate;

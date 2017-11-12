@@ -14,6 +14,7 @@ var commentbyviewid = require("./viewspot/getcommentbyviewid")
 var stationinfobylocate = require("./viewspot/getstationbylocate")
 var hotelinfobylocate = require("./viewspot/gethotelbylocate")
 var restaurantinfobylocate = require("./viewspot/getrestaurantbylocate")
+var petrolstationinfobylocate = require("./viewspot/getpetrolstationbylocate")
 
 router.get("/userinfo", userInfo.GetUserInfo);
 router.get("/viewinfobyname", viewinfobyname.GetViewByName);
@@ -28,5 +29,6 @@ router.get("/commentbyviewid", commentbyviewid.GetCommentByViewid)
 router.get("/stationinfobylocate", stationinfobylocate.GetStationInfoByLocate)
 router.get("/hotelinfobylocate", hotelinfobylocate.GetHotelInfoByLocate)
 router.get("/restaurantinfobylocate", restaurantinfobylocate.GetRestaurantInfoByLocate)
+router.get("/petrolstationinfobylocate", petrolstationinfobylocate.GetPetrolStationInfoByLocate)
 
 module.exports = router;

@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfo(req, res, next) {
+function GetPetrolStationInfoByLocate(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,24 +12,23 @@ function GetViewInfo(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM ViewSpotData" +
-        " WHERE ViewSpotData.lng > " + params.minLng + " and ViewSpotData.lng < " + params.maxLng +
-        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat;
-        "and pname = " + params.pName + " and cityname = " + params.cityName ;
+    var queryString = "SELECT * FROM PetrolStations" +
+        " WHERE PetrolStations.Lng > " + params.minLng + " and PetrolStations.Lng < " + params.maxLng +
+        " and PetrolStations.Lat > " + params.minLat + " and PetrolStations.Lat < " + params.maxLat + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                StationInfo: queryString
             });
             return;
         }
         else {
             res.json({
-                ViewInfo: results
+                StationInfo: results
             });
         }
     });
     connection.end();
 }
 
-exports.GetViewInfo = GetViewInfo;
+exports.GetPetrolStationInfoByLocate = GetPetrolStationInfoByLocate;

@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfo(req, res, next) {
+function GetViewByCost(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,14 +12,12 @@ function GetViewInfo(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM ViewSpotData" +
-        " WHERE ViewSpotData.lng > " + params.minLng + " and ViewSpotData.lng < " + params.maxLng +
-        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat;
-        "and pname = " + params.pName + " and cityname = " + params.cityName ;
+    var queryString = "SELECT * FROM ViewSpotOfWuhan.ViewSpotData" +
+        " ORDER BY biz_ext_cost " + params.ascordesc + " LIMIT " + params.limit + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                ViewInfo: err.message
             });
             return;
         }
@@ -32,4 +30,4 @@ function GetViewInfo(req, res, next) {
     connection.end();
 }
 
-exports.GetViewInfo = GetViewInfo;
+exports.GetViewByCost = GetViewByCost;

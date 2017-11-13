@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfo(req, res, next) {
+function GetViewInfoByLocate(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -14,8 +14,7 @@ function GetViewInfo(req, res, next) {
 
     var queryString = "SELECT * FROM ViewSpotData" +
         " WHERE ViewSpotData.lng > " + params.minLng + " and ViewSpotData.lng < " + params.maxLng +
-        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat;
-        "and pname = " + params.pName + " and cityname = " + params.cityName ;
+        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
@@ -32,4 +31,4 @@ function GetViewInfo(req, res, next) {
     connection.end();
 }
 
-exports.GetViewInfo = GetViewInfo;
+exports.GetViewInfoByLocate = GetViewInfoByLocate;

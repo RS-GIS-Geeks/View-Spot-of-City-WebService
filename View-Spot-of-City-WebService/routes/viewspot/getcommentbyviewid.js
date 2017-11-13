@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfo(req, res, next) {
+function GetCommentByViewid(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,24 +12,23 @@ function GetViewInfo(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM ViewSpotData" +
-        " WHERE ViewSpotData.lng > " + params.minLng + " and ViewSpotData.lng < " + params.maxLng +
-        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat;
-        "and pname = " + params.pName + " and cityname = " + params.cityName ;
+    var queryString = "SELECT * From ViewSpotOfWuhan.Comments" +
+        " WHERE SpotId = '" + params.viewid + "'" +
+        " ORDER BY Year DESC ,Month DESC ,Day DESC ;";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                CommentInfo: err.message
             });
             return;
         }
         else {
             res.json({
-                ViewInfo: results
+                CommentInfo: results
             });
         }
     });
     connection.end();
 }
 
-exports.GetViewInfo = GetViewInfo;
+exports.GetCommentByViewid = GetCommentByViewid;

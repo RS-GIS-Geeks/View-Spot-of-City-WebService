@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function GetViewInfo(req, res, next) {
+function GetViewByVisitor(req, res, next) {
     var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
@@ -12,14 +12,19 @@ function GetViewInfo(req, res, next) {
     });
     var params = req.query;
 
-    var queryString = "SELECT * FROM ViewSpotData" +
-        " WHERE ViewSpotData.lng > " + params.minLng + " and ViewSpotData.lng < " + params.maxLng +
-        " and ViewSpotData.lat > " + params.minLat + " and ViewSpotData.lat < " + params.maxLat;
-        "and pname = " + params.pName + " and cityname = " + params.cityName ;
+    var queryString = "SELECT  a.Id," +
+        "a.Month," +
+        "a.ViewId," +   
+        "a.Visitors," +
+        "a.Year," +
+        "lat," +
+        "lng, name as 'ViewSpotName' From Visitors a INNER JOIN ViewSpotData b ON a.Id = b.id " +
+        "where a.Month=" + params.month + " and a.Year=" + params.year + 
+        " ORDER BY a.Visitors DESC LIMIT " + params.limit + ";";
     connection.query(queryString, function (err, results) {
         if (err) {
             res.json({
-                ViewInfo: []
+                ViewInfo: err.message + "[" + queryString + "]"
             });
             return;
         }
@@ -32,4 +37,4 @@ function GetViewInfo(req, res, next) {
     connection.end();
 }
 
-exports.GetViewInfo = GetViewInfo;
+exports.GetViewByVisitor = GetViewByVisitor;

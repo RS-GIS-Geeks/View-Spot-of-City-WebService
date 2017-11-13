@@ -12,7 +12,7 @@ function GetVisitorByYearMonth(req, res, next) {
     });
     var params = req.query;
     var queryString;
-    queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
+    queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat,ViewSpotData.name as ViewSpotName \
     FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
     " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + 
     "'" + " AND Visitors.Month = '" + params.month + "' \

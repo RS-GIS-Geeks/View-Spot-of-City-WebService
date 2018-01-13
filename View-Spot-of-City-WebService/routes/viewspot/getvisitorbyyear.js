@@ -10,20 +10,20 @@ function GetVisitorByYear(req, res, next) {
     if(params.year != null && params.viewid != null)
     {
         queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
-        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        FROM Visitors, ViewSpotData" +
         " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + 
         "'" + " AND Visitors.ViewId = '" + params.viewid + "';";
     }
     else if(params.year == null)
     {
         queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
-        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        FROM Visitors,ViewSpotData" +
         " WHERE Visitors.ViewId = ViewSpotData.id " + " AND Visitors.ViewId = '" + params.viewid + "';";
     }
     else
     {
         queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
-        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        FROM Visitors, ViewSpotData" +
         " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + "';";
     }
 

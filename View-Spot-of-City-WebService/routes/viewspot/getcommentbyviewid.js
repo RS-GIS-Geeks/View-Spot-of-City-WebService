@@ -7,7 +7,7 @@ function GetCommentByViewid(req, res, next) {
     var connection = mysql.createConnection(db_info.db);
     var params = req.query;
 
-    var queryString = "SELECT * From ViewSpotOfWuhan.Comments" +
+    var queryString = "SELECT * From Comments" +
         " WHERE SpotId = '" + params.viewid + "'" +
         " ORDER BY Year DESC ,Month DESC ,Day DESC ;";
     connection.query(queryString, function (err, results) {

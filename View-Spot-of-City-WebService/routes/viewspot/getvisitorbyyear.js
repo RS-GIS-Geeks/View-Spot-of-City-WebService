@@ -1,34 +1,29 @@
 "use strick"
 exports.__esModule = true;
 var mysql = require("mysql");
+var db_info = require("./database.config")
 
 function GetVisitorByYear(req, res, next) {
-    var connection = mysql.createConnection({
-        host: "localhost",
-        port: 3306,
-        user: "admin",
-        password: "admin1997",
-        database: "ViewSpotOfWuhan"
-    });
+    var connection = mysql.createConnection(db_info.db);
     var params = req.query;
     var queryString;
     if(params.year != null && params.viewid != null)
     {
         queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
-        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        FROM Visitors, ViewSpotData" +
         " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + 
         "'" + " AND Visitors.ViewId = '" + params.viewid + "';";
     }
     else if(params.year == null)
     {
         queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
-        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        FROM Visitors,ViewSpotData" +
         " WHERE Visitors.ViewId = ViewSpotData.id " + " AND Visitors.ViewId = '" + params.viewid + "';";
     }
     else
     {
         queryString = "SELECT Visitors.*,ViewSpotData.lng,ViewSpotData.lat \
-        FROM ViewSpotOfWuhan.Visitors,ViewSpotOfWuhan.ViewSpotData" +
+        FROM Visitors, ViewSpotData" +
         " WHERE Visitors.ViewId = ViewSpotData.id AND Visitors.Year = '" + params.year + "';";
     }
 
